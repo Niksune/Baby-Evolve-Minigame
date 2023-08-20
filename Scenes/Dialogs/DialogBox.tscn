@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dll7tgwvm8fd1"]
+
+[ext_resource type="Script" path="res://Scenes/Dialogs/DialogBox.gd" id="1_c2t88"]
+[ext_resource type="Texture2D" uid="uid://6dauvurgpcyr" path="res://Assets/fond_marron.png" id="2_kdnt3"]
+
+[node name="DialogBox" type="Node2D"]
+process_mode = 2
+z_index = 5
+script = ExtResource("1_c2t88")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 105.0
+offset_bottom = 157.0
+
+[node name="DialogLabel" type="RichTextLabel" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+fit_content = true
+
+[node name="DialogBackground" type="Sprite2D" parent="VBoxContainer"]
+z_index = -1
+scale = Vector2(0.264444, 0.840872)
+texture = ExtResource("2_kdnt3")
+centered = false
+
+[node name="DialogButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/DialogButton" to="." method="_on_dialog_button_pressed"]

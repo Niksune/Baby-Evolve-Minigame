@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfeuyihwq6loe"]
+
+[ext_resource type="Script" path="res://Scenes/UI/UI.gd" id="1_gf8fs"]
+[ext_resource type="PackedScene" uid="uid://dll7tgwvm8fd1" path="res://Scenes/Dialogs/dialog_box.tscn" id="2_omh13"]
+
+[node name="UI" type="Node2D"]
+script = ExtResource("1_gf8fs")
+dialog_box_scene = ExtResource("2_omh13")

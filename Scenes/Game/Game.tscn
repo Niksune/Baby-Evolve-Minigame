@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bae4h0r30ijdr"]
+
+[ext_resource type="Script" path="res://Scenes/Game/Game.gd" id="1_bgw30"]
+[ext_resource type="PackedScene" uid="uid://dfeuyihwq6loe" path="res://Scenes/UI/UI.tscn" id="1_fpevc"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_bgw30")
+
+[node name="UI" parent="." instance=ExtResource("1_fpevc")]
+unique_name_in_owner = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="add_points" from="UI" to="." method="_on_ui_add_points"]
+[connection signal="pause_game" from="UI" to="." method="_on_ui_pause_game"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
