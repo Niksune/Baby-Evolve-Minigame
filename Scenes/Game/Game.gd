@@ -1,13 +1,13 @@
 extends Node2D
 
 @onready var UI = %UI
+@onready var ScoreManager = %ScoreManager
 
 
 var current_points : int = 0 :
 	set(x): 
 		current_points = x
 		print("Points ",current_points)
-
 
 var total_points : int = 0 :
 	set(x): 
@@ -17,7 +17,7 @@ var total_points : int = 0 :
 
 
 
-func _add_points(points_to_add):
+func add_points(points_to_add):
 	current_points += points_to_add
 	total_points += points_to_add
 	UI.points_change(current_points, total_points)
@@ -25,11 +25,12 @@ func _add_points(points_to_add):
 
 
 func _on_ui_add_points(points_to_add):
-	_add_points(points_to_add)
+	add_points(points_to_add)
 
 
-func _on_timer_timeout():
-	_add_points(1)
+func _on_wall_bounce():
+	add_points(ScoreManager.points_from_bounce())
+
 
 
 

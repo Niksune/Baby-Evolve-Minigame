@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtn8sjtbclgi2"]
+[gd_scene load_steps=5 format=3 uid="uid://dtn8sjtbclgi2"]
 
 [ext_resource type="Script" path="res://Scenes/BallGame/Ball.gd" id="1_83qyf"]
+[ext_resource type="Script" path="res://Scenes/BallGame/BallGame.gd" id="1_b0wxk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0lcrj"]
 
@@ -8,6 +9,7 @@
 size = Vector2(50, 50)
 
 [node name="BallGame" type="Node2D"]
+script = ExtResource("1_b0wxk")
 
 [node name="Ball" type="CharacterBody2D" parent="."]
 script = ExtResource("1_83qyf")
@@ -18,3 +20,5 @@ shape = SubResource("CircleShape2D_0lcrj")
 [node name="BallSprite" type="Sprite2D" parent="Ball"]
 scale = Vector2(0.36, 0.32)
 texture = SubResource("PlaceholderTexture2D_wfbiu")
+
+[connection signal="ball_wall_bounce" from="Ball" to="." method="_on_ball_wall_bounce"]

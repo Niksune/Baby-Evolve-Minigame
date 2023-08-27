@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bae4h0r30ijdr"]
+[gd_scene load_steps=5 format=3 uid="uid://bae4h0r30ijdr"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Game.gd" id="1_bgw30"]
 [ext_resource type="PackedScene" uid="uid://dfeuyihwq6loe" path="res://Scenes/UI/UI.tscn" id="1_fpevc"]
-[ext_resource type="PackedScene" uid="uid://dtn8sjtbclgi2" path="res://Scenes/BallGame/BallGame.tscn" id="3_twm1r"]
+[ext_resource type="PackedScene" uid="uid://dtn8sjtbclgi2" path="res://Scenes/BallGame/BallGame.tscn" id="3_ixc25"]
+[ext_resource type="Script" path="res://Scenes/Game/ScoreManager.gd" id="4_im316"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_bgw30")
@@ -10,11 +11,12 @@ script = ExtResource("1_bgw30")
 [node name="UI" parent="." instance=ExtResource("1_fpevc")]
 unique_name_in_owner = true
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
+[node name="BallGame" parent="." instance=ExtResource("3_ixc25")]
 
-[node name="BallGame" parent="." instance=ExtResource("3_twm1r")]
+[node name="ScoreManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_im316")
 
 [connection signal="add_points" from="UI" to="." method="_on_ui_add_points"]
 [connection signal="pause_game" from="UI" to="." method="_on_ui_pause_game"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="wall_bounce" from="BallGame" to="." method="_on_wall_bounce"]
