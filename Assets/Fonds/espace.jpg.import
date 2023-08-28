@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6dauvurgpcyr"
-path="res://.godot/imported/fond_marron.png-998254716ac54cee3d927e783e64ff02.ctex"
+uid="uid://d41ro0m2gg8q"
+path="res://.godot/imported/espace.jpg-a98588ac36a891e2ff508085f677917f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/fond_marron.png"
-dest_files=["res://.godot/imported/fond_marron.png-998254716ac54cee3d927e783e64ff02.ctex"]
+source_file="res://Assets/Fonds/espace.jpg"
+dest_files=["res://.godot/imported/espace.jpg-a98588ac36a891e2ff508085f677917f.ctex"]
 
 [params]
 

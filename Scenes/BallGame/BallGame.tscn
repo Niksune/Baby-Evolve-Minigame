@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtn8sjtbclgi2"]
+[gd_scene load_steps=6 format=3 uid="uid://dtn8sjtbclgi2"]
 
 [ext_resource type="Script" path="res://Scenes/BallGame/Ball.gd" id="1_83qyf"]
 [ext_resource type="Script" path="res://Scenes/BallGame/BallGame.gd" id="1_b0wxk"]
+[ext_resource type="Texture2D" uid="uid://d41ro0m2gg8q" path="res://Assets/Fonds/espace.jpg" id="3_364w6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0lcrj"]
 
@@ -20,5 +21,11 @@ shape = SubResource("CircleShape2D_0lcrj")
 [node name="BallSprite" type="Sprite2D" parent="Ball"]
 scale = Vector2(0.36, 0.32)
 texture = SubResource("PlaceholderTexture2D_wfbiu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -10
+offset_right = 852.0
+offset_bottom = 648.0
+texture = ExtResource("3_364w6")
 
 [connection signal="ball_wall_bounce" from="Ball" to="." method="_on_ball_wall_bounce"]
