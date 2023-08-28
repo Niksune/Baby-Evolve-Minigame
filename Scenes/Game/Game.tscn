@@ -12,6 +12,7 @@ script = ExtResource("1_bgw30")
 unique_name_in_owner = true
 
 [node name="BallGame" parent="." instance=ExtResource("3_ixc25")]
+position = Vector2(300, 0)
 
 [node name="ScoreManager" type="Node" parent="."]
 unique_name_in_owner = true

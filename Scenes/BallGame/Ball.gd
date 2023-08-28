@@ -4,7 +4,7 @@ extends CharacterBody2D
 var speed = 300.0
 var direction := Vector2(1.0,1.0)
 
-@export var max_x = 1152
+@export var max_x = 852
 @export var max_y = 648
 
 signal ball_wall_bounce()
