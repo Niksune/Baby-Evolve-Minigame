@@ -7,12 +7,11 @@ var direction := Vector2(1.0,1.0)
 @export var max_x = 852
 @export var max_y = 648
 
+
 signal ball_wall_bounce()
 
 
 func _physics_process(_delta):
-	
-	#print(position, max_x, max_y)
 	
 	if(position.x < 0 or position.x >= max_x):
 		direction = Vector2(-direction.x, direction.y)

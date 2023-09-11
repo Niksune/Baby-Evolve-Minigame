@@ -1,15 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfeuyihwq6loe"]
+[gd_scene load_steps=3 format=3 uid="uid://dfeuyihwq6loe"]
 
 [ext_resource type="Script" path="res://Scenes/UI/UI.gd" id="1_gf8fs"]
 [ext_resource type="PackedScene" uid="uid://dll7tgwvm8fd1" path="res://Scenes/Dialogs/DialogBox.tscn" id="2_wtviy"]
-[ext_resource type="Script" path="res://Scenes/Game/DialogManager.gd" id="2_xsuq0"]
 
 [node name="UI" type="Node2D"]
 script = ExtResource("1_gf8fs")
-
-[node name="DialogManager" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("2_xsuq0")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 300.0
