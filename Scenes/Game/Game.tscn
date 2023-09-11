@@ -35,4 +35,5 @@ script = ExtResource("5_yer8e")
 
 [connection signal="buy_button_pressed" from="HSplitContainer/UI" to="." method="_on_ui_buy_button_pressed"]
 [connection signal="wall_bounce" from="HSplitContainer/BallGame" to="." method="_on_wall_bounce"]
+[connection signal="add_ball" from="EvolveManager" to="HSplitContainer/BallGame" method="_on_evolve_manager_add_ball"]
 [connection signal="launch_dialog" from="DialogManager" to="HSplitContainer/UI" method="_on_dialog_manager_launch_dialog"]
