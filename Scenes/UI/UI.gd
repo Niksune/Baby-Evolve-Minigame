@@ -28,8 +28,8 @@ func refresh_UI(current_points, total_points):
 	
 
 
-func create_new_button(ID, text):
-	var buy_button = BuyButton.new(ID, text)
+func create_new_button(ID, text, price):
+	var buy_button = BuyButton.new(ID, text, price)
 	evolve_list.add_child(buy_button)
 	
 

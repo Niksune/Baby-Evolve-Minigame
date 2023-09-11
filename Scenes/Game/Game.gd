@@ -12,8 +12,8 @@ var total_points : int = 0
 
 
 func _ready():
-	UI.create_new_button("double_wall_1", "Doublez les gains")
-	UI.create_new_button("add_ball_1", "Ajoute une balle")
+	UI.create_new_button("double_wall_1", "Doublez les gains", 2)
+	UI.create_new_button("add_ball_1", "Ajoute une balle", 10)
 	DialogManager.execute_dialog(1)
 
 
