@@ -11,7 +11,6 @@ func _ready():
 
 func _on_pressed():
 	EVENTS.buy_button_pressed.emit(ID)
-	print("Bought : ",ID)
 
 func try_kill_ID(check_ID):
 	if(ID == check_ID):
