@@ -1,16 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bae4h0r30ijdr"]
+[gd_scene load_steps=7 format=3 uid="uid://bae4h0r30ijdr"]
 
-[ext_resource type="Script" path="res://Scenes/Game/Game.gd" id="1_bgw30"]
 [ext_resource type="PackedScene" uid="uid://dfeuyihwq6loe" path="res://Scenes/UI/UI.tscn" id="1_fpevc"]
+[ext_resource type="Script" path="res://Scenes/Game/Game.gd" id="1_js6wb"]
+[ext_resource type="Script" path="res://Scenes/Game/DialogManager.gd" id="1_kxsmm"]
 [ext_resource type="PackedScene" uid="uid://dtn8sjtbclgi2" path="res://Scenes/BallGame/BallGame.tscn" id="3_ixc25"]
-[ext_resource type="Script" path="res://Scenes/Game/ScoreManager.gd" id="4_im316"]
+[ext_resource type="Script" path="res://Scenes/Game/EvolveManager.gd" id="5_mtkla"]
+[ext_resource type="Script" path="res://Scenes/Game/TextsNode.gd" id="5_yer8e"]
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_bgw30")
-
-[node name="ScoreManager" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("4_im316")
+script = ExtResource("1_js6wb")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
 offset_right = 1220.0
@@ -23,6 +21,18 @@ unique_name_in_owner = true
 [node name="BallGame" parent="HSplitContainer" instance=ExtResource("3_ixc25")]
 position = Vector2(300, 0)
 
-[connection signal="add_points" from="HSplitContainer/UI" to="." method="_on_ui_add_points"]
-[connection signal="pause_game" from="HSplitContainer/UI" to="." method="_on_ui_pause_game"]
+[node name="EvolveManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_mtkla")
+
+[node name="DialogManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_kxsmm")
+
+[node name="TextsNode" type="Node" parent="DialogManager"]
+unique_name_in_owner = true
+script = ExtResource("5_yer8e")
+
+[connection signal="buy_button_pressed" from="HSplitContainer/UI" to="." method="_on_ui_buy_button_pressed"]
 [connection signal="wall_bounce" from="HSplitContainer/BallGame" to="." method="_on_wall_bounce"]
+[connection signal="launch_dialog" from="DialogManager" to="HSplitContainer/UI" method="_on_dialog_manager_launch_dialog"]

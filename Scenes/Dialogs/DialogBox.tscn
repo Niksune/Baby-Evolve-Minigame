@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://6dauvurgpcyr" path="res://Assets/Fonds/fond_marron.png" id="2_kdnt3"]
 
 [node name="DialogBox" type="Node2D"]
-process_mode = 2
+process_mode = 3
 z_index = 5
 script = ExtResource("1_c2t88")
 
@@ -25,6 +25,8 @@ centered = false
 
 [node name="DialogButton" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
 
+[connection signal="mouse_entered" from="VBoxContainer/DialogButton" to="." method="_on_dialog_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/DialogButton" to="." method="_on_dialog_button_pressed"]

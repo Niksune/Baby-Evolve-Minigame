@@ -1,5 +1,12 @@
 extends Node
 
+func dialog0():
+	return "DEBUG"
+
+func button0():
+	return "DEBUG"
+
+
 func dialog1():
 	return "Bien le bonjour !"
 

@@ -24,3 +24,4 @@ func change_dialog(mainText, buttonText):
 
 func _on_dialog_button_pressed():
 	close_dialog()
+	

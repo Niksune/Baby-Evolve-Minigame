@@ -1,24 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfeuyihwq6loe"]
+[gd_scene load_steps=4 format=3 uid="uid://dfeuyihwq6loe"]
 
 [ext_resource type="Script" path="res://Scenes/UI/UI.gd" id="1_gf8fs"]
 [ext_resource type="PackedScene" uid="uid://dll7tgwvm8fd1" path="res://Scenes/Dialogs/DialogBox.tscn" id="2_wtviy"]
-[ext_resource type="Script" path="res://Scenes/UI/DialogManager.gd" id="3_8kpe8"]
-[ext_resource type="Script" path="res://Scenes/UI/TextNode.gd" id="3_gt53a"]
+[ext_resource type="Script" path="res://Scenes/Game/DialogManager.gd" id="2_xsuq0"]
 
 [node name="UI" type="Node2D"]
 script = ExtResource("1_gf8fs")
 
 [node name="DialogManager" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("3_8kpe8")
-
-[node name="DialogBox" parent="DialogManager" instance=ExtResource("2_wtviy")]
-unique_name_in_owner = true
-position = Vector2(413, 58)
-
-[node name="TextsNode" type="Node" parent="DialogManager/DialogBox"]
-unique_name_in_owner = true
-script = ExtResource("3_gt53a")
+script = ExtResource("2_xsuq0")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 300.0
@@ -29,6 +20,7 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="Menu" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 50
 
@@ -58,27 +50,10 @@ layout_mode = 2
 text = "0"
 
 [node name="EvolveList" type="VBoxContainer" parent="MarginContainer/Menu"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/Menu/EvolveList"]
-layout_mode = 2
-text = "But1"
-
-[node name="Button2" type="Button" parent="MarginContainer/Menu/EvolveList"]
-layout_mode = 2
-text = "But1"
-
-[node name="EvolveList2" type="VBoxContainer" parent="MarginContainer/Menu"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="MarginContainer/Menu/EvolveList2"]
-layout_mode = 2
-text = "But1"
-
-[node name="Button2" type="Button" parent="MarginContainer/Menu/EvolveList2"]
-layout_mode = 2
-text = "But1"
-
-[node name="Button3" type="Button" parent="MarginContainer/Menu/EvolveList2"]
-layout_mode = 2
-text = "But1"
+[node name="DialogBox" parent="." instance=ExtResource("2_wtviy")]
+unique_name_in_owner = true
+top_level = true
+position = Vector2(413, 58)
