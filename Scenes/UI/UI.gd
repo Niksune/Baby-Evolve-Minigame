@@ -47,3 +47,7 @@ func _on_dialog_manager_launch_dialog(main_text, button_text):
 	dialog_box.launch_dialog(main_text, button_text)
 
 
+
+
+func _on_evolve_manager_add_new_evolve(ID, text, price):
+	create_new_button(ID, text, price)

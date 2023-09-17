@@ -5,14 +5,12 @@ extends Node2D
 @onready var DialogManager = %DialogManager
 
 
-var current_points : int = 0
+var current_points : int = 100
 var total_points : int = 0
 
 
 
 func _ready():
-	create_new_evolve_button("double_wall_1")
-	create_new_evolve_button("add_ball_1")
 	DialogManager.execute_dialog(1)
 
 
@@ -35,11 +33,13 @@ func send_update_points():
 func create_new_evolve_button(ID_evolve):
 	UI.create_new_button(ID_evolve, EvolveManager.give_text(ID_evolve), EvolveManager.give_price(ID_evolve))
 
+
 func check_buying(ID_evolve):
-	if(!EvolveManager.is_total_point(ID_evolve)):
-		if(EvolveManager.give_price(ID_evolve) <= current_points):
-			remove_points(EvolveManager.give_price(ID_evolve))
-			EvolveManager.new_evolve(ID_evolve)
+	var evolve = EvolveManager.evolve_map[ID_evolve]
+	if(!evolve.is_total_points):
+		if(evolve.cost <= current_points):
+			remove_points(evolve.cost)
+			EvolveManager.new_evolve_bought(ID_evolve)
 			UI.buy_button_suppr(ID_evolve)
 		else:
 			print(ID_evolve," too expensive")
