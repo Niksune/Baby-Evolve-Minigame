@@ -11,7 +11,8 @@ var total_points : int = 0
 
 
 func _ready():
-	DialogManager.execute_dialog(1)
+	pass
+	#DialogManager.execute_dialog(1)
 
 
 

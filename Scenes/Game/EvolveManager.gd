@@ -5,6 +5,11 @@ signal add_new_evolve(ID, text, price)
 
 var Evolve = load("res://Scenes/Game/Evolve.gd")
 
+var bounce_wall_multiplicator = 1
+
+var multi_bounce_counter = 1
+var add_ball_counter = 1
+
 var evolve_map = {
 	"multi_bounce_1" : Evolve.new("multi_bounce", 2, 5, false),
 	"multi_bounce_2" : Evolve.new("multi_bounce", 2, 5, false),
@@ -20,6 +25,8 @@ func add_new_evolves():
 		var evolve = evolve_map[ID_evolve]
 		if evolve.buyable :
 			continue
+		var IDbounce = "multi_bounce_"+str(multi_bounce_counter)
+		var IDball = "add_ball_"+str(add_ball_counter)
 		match ID_evolve:
 			"multi_bounce_1":
 				create_new_evolve(ID_evolve)
@@ -41,11 +48,14 @@ func add_new_evolves():
 			"activate_bonk":
 				if evolve_map["multi_bounce_3"].bought && evolve_map["add_ball_3"].bought:
 					create_new_evolve(ID_evolve)
+			IDbounce, IDball:
+				create_new_evolve(ID_evolve)
+			
 		
 
 
 
-var bounce_wall_multiplicator = 1
+
 
 
 
@@ -69,6 +79,7 @@ func points_from_bounce():
 
 
 func new_evolve_bought(ID_evolve):
+	print("Evolve : ",ID_evolve," bought")
 	evolve_map[ID_evolve].bought = true
 	process_evolve(ID_evolve)
 	add_new_evolves()
@@ -80,6 +91,12 @@ func process_evolve(ID_evolve):
 	match evolve_map[ID_evolve].modifier:
 		"multi_bounce" : 
 			bounce_wall_multiplicator *= evolve_map[ID_evolve].factor
+			multi_bounce_counter += 1
+			if multi_bounce_counter >= 3:
+				evolve_map["multi_bounce_"+str(multi_bounce_counter)] = Evolve.new("multi_bounce", multi_bounce_counter, pow(10, multi_bounce_counter-1), false)
 		"add_ball" : 
 			add_ball.emit(evolve_map[ID_evolve].factor)
+			add_ball_counter += 1
+			if add_ball_counter >= 3:
+				evolve_map["add_ball_"+str(add_ball_counter)] = Evolve.new("add_ball", add_ball_counter, pow(10, add_ball_counter-1), false)
 

@@ -3,7 +3,8 @@ extends Node2D
 @onready var dialog_label = %DialogLabel
 @onready var dialog_button = %DialogButton
 
-
+func _ready():
+	self.visible = false
 
 func launch_dialog(mainText, buttonText):
 	change_dialog(mainText, buttonText)

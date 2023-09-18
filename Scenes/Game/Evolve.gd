@@ -35,6 +35,15 @@ func generate_bounce_text(number):
 			XXsubtitute = "Double"
 		3: 
 			XXsubtitute = "Triple"
+		4: 
+			XXsubtitute = "Quadruple"
+		5: 
+			XXsubtitute = "Quintuple"
+		6: 
+			XXsubtitute = "Sextuple"
+		7: 
+			XXsubtitute = "Septuple"
+		
 		_:
 			pass
 	return bounce_text.replace("XX", XXsubtitute)
@@ -49,6 +58,14 @@ func generate_ball_text(number):
 			XXsubtitute = "Deux"
 		3: 
 			XXsubtitute = "Trois"
+		4: 
+			XXsubtitute = "Quatre"
+		5: 
+			XXsubtitute = "Cinq"
+		6: 
+			XXsubtitute = "Six"
+		7: 
+			XXsubtitute = "Sept"		
 		_:
 			pass
 	return ball_text.replace("XX", XXsubtitute)
