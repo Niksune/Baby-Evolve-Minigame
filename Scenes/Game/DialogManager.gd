@@ -4,19 +4,16 @@ extends Node
 
 signal launch_dialog(main_text, button_text)
 
-
-var dialog_passed = []
-
 var dialog_list_fr = [
 	"DEBUG",
 	"Bienvenue dans MiniBonk !\n 
 Je vous offre une première balle, elle vous rapportera des points en bounçant sur les murs.\n
 Amusez vous bien !",
 
-"Félicitations ! Vous avez accumulé 10 points !\n
+"Félicitations ! Vous avez accumulé GLOBAL1 points !\n
 Vous pouvez acheter à gauche une amélioration qui doublera les points données par un bounce.",
 
-"Une balle en plus peut être ?",
+"Peut être seriez vous interessés par une balle en plus ?",
 
 "Bonk ?",
 
@@ -37,7 +34,7 @@ var dialog_list_en = [
 I offer you a first ball, it will give you points by bouncing on the walls.\n
 Have fun !",
 
-"Congratulation ! You got 10 points !\n
+"Congratulation ! You got GLOBAL1 points !\n
 You can buy on the left an evolve that will double the points you get on each bounce.",
 
 "Interested in an other ball maybe ?",
@@ -55,17 +52,25 @@ var button_list_en = [
 	"Continue"
 ]
 
+var dialog_passed = []
+var dialog_list = dialog_list_fr
+var button_list = button_list_fr
 
 func _init():
 	dialog_passed.resize(dialog_list_fr.size())
 	dialog_passed.fill(false)
+	if GLOBAL.lang == "en":
+		dialog_list = dialog_list_en
+		button_list = button_list_en
+	for text_num in range(dialog_list.size()):
+		dialog_list[text_num] = dialog_list[text_num].replace("GLOBAL1", str(GLOBAL.evolve_map["multi_bounce_1"].cost))
 
 
 
 func points_change(current_points, total_points):
-	if total_points >= 10 && dialog_passed[2] == false:
+	if current_points >= GLOBAL.evolve_map["multi_bounce_1"].cost && !dialog_passed[2]:
 		pass_and_execute_dialog(2)
-	if total_points >= 20 && dialog_passed[3] == false:
+	elif current_points >= GLOBAL.evolve_map["multi_bounce_1"].cost*2 && GLOBAL.evolve_map["multi_bounce_1"].bought && dialog_passed[2] && !dialog_passed[3]:
 		pass_and_execute_dialog(3)
 
 
@@ -75,11 +80,6 @@ func pass_and_execute_dialog(dialog_ID):
 
 
 func execute_dialog(ID):
-	var dialog_list = dialog_list_fr
-	var button_list = button_list_fr
-	if GLOBAL.lang == "en":
-		dialog_list = dialog_list_en
-		button_list = button_list_en
 	match ID :
 		0:
 			launch_dialog.emit(dialog_list[0], button_list[0])

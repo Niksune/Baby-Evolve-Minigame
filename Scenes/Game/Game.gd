@@ -5,7 +5,7 @@ extends Node2D
 @onready var DialogManager = %DialogManager
 
 
-var current_points : int = 100
+var current_points : int = 0
 var total_points : int = 0
 
 
@@ -39,7 +39,7 @@ func create_new_evolve_button(ID_evolve):
 
 
 func check_buying(ID_evolve):
-	var evolve = EvolveManager.evolve_map[ID_evolve]
+	var evolve = GLOBAL.evolve_map[ID_evolve]
 	if(!evolve.is_total_points):
 		if(evolve.cost <= current_points):
 			remove_points(evolve.cost)

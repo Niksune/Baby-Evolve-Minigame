@@ -4,7 +4,8 @@ var ID: String
 
 func _init(init_ID : String, init_text : String, init_price : int):
 	ID = init_ID
-	text = init_ID + " " + init_text
+	#text = init_ID + " " + init_text + " : " + str(init_price) + " pts"
+	text = init_text + " : " + str(init_price) + " pts"
 
 func _ready():
 	self.pressed.connect(self._on_pressed)

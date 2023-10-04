@@ -26,12 +26,14 @@ theme_override_constants/v_separation = 0
 columns = 2
 
 [node name="FixTotalPointsLabel" type="Label" parent="MarginContainer/Menu/ScoreBoard"]
+visible = false
 layout_mode = 2
 text = "Total Points
 "
 
 [node name="TotalPointsLabel" type="Label" parent="MarginContainer/Menu/ScoreBoard"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "0"
 
