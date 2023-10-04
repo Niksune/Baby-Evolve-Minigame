@@ -8,7 +8,9 @@ var cost : int
 var is_total_points : bool = false
 var text : String
 var buyable : bool = false
+var in_store : bool = false
 var bought : bool = false
+
 
 func _init(modifier, factor, cost, is_total_points, text="novalue"):
 	self.modifier = modifier
@@ -26,6 +28,7 @@ func generate_text():
 		return generate_bounce_text(self.factor)
 	elif self.modifier == "add_ball":
 		return generate_ball_text(self.factor)
+
 
 func generate_bounce_text(number):
 	var bounce_text = "XX Wall Bounce"
@@ -47,6 +50,7 @@ func generate_bounce_text(number):
 		_:
 			pass
 	return bounce_text.replace("XX", XXsubtitute)
+
 
 func generate_ball_text(number):
 	var ball_text = "Ajoute XX Balles"

@@ -11,8 +11,8 @@ var total_points : int = 0
 
 
 func _ready():
-	pass
 	DialogManager.execute_dialog(1)
+	pass
 
 
 
@@ -20,14 +20,17 @@ func add_points(points_to_add):
 	current_points += points_to_add
 	total_points += points_to_add
 	send_update_points()
-	
+
+
 func remove_points(points_to_remove):
 	current_points -= points_to_remove
 	send_update_points()
 
+
 func send_update_points():
 	UI.points_change(current_points, total_points)
 	DialogManager.points_change(current_points, total_points)
+	EvolveManager.points_change(current_points, total_points)
 
 
 
@@ -46,8 +49,8 @@ func check_buying(ID_evolve):
 			print(ID_evolve," too expensive")
 	else:
 		pass
-		
-	
+
+
 
 func _on_wall_bounce():
 	add_points(EvolveManager.points_from_bounce())

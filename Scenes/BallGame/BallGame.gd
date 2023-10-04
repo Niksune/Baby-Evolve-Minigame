@@ -13,7 +13,6 @@ func _ready():
 
 func _on_ball_wall_bounce():
 	wall_bounce.emit()
-	print(_on_ball_wall_bounce)
 
 
 func add_ball():
