@@ -5,7 +5,7 @@ extends Node2D
 @onready var DialogManager = %DialogManager
 
 
-var current_points : int = 0
+var current_points : int = 1000
 var total_points : int = 0
 
 

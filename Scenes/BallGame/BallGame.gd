@@ -1,6 +1,6 @@
 extends Node2D
 
-var Ball = load("res://Scenes/BallGame/Ball.gd")
+@export var ball_scene = preload("res://Scenes/Ball/Ball.tscn")
 
 
 signal wall_bounce()
@@ -16,7 +16,7 @@ func _on_ball_wall_bounce():
 
 
 func add_ball():
-	var new_ball = Ball.new()
+	var new_ball = ball_scene.instantiate()
 	self.add_child(new_ball)
 	
 
