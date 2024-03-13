@@ -6,6 +6,7 @@ signal add_new_evolve(ID, text, price)
 var Evolve = load("res://Scenes/Game/Evolve.gd")
 
 var bounce_wall_multiplicator = 1
+var bonk_multiplicator = 1
 
 var multi_bounce_counter = 1
 var add_ball_counter = 1
@@ -21,7 +22,8 @@ func _ready():
 func points_from_bounce():
 	return 1 * bounce_wall_multiplicator
 
-
+func points_from_bonk():
+	return 10000 * bonk_multiplicator
 
 func points_change(current_points, total_points):
 	if current_points >= GLOBAL.evolve_map["multi_bounce_1"].cost && !GLOBAL.evolve_map["multi_bounce_1"].buyable : 

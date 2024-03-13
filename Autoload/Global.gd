@@ -11,3 +11,5 @@ var evolve_map = {
 	"add_ball_3" : Evolve.new("add_ball", 1, 100, false),
 	"activate_bonk" : Evolve.new("activate_bonk", 0, 500, false, "Activer le BONK")
 }
+
+var game_mode = false

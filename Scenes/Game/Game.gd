@@ -3,6 +3,7 @@ extends Node2D
 @onready var UI = %UI
 @onready var EvolveManager = %EvolveManager
 @onready var DialogManager = %DialogManager
+@onready var BonkSound = %BonkSound
 
 
 var current_points : int = 1000
@@ -11,8 +12,8 @@ var total_points : int = 0
 
 
 func _ready():
-	DialogManager.execute_dialog(1)
-	pass
+	if GLOBAL.game_mode:
+		DialogManager.execute_dialog(1)
 
 
 
@@ -29,8 +30,9 @@ func remove_points(points_to_remove):
 
 func send_update_points():
 	UI.points_change(current_points, total_points)
-	DialogManager.points_change(current_points, total_points)
 	EvolveManager.points_change(current_points, total_points)
+	if GLOBAL.game_mode:
+		DialogManager.points_change(current_points, total_points)
 
 
 
@@ -52,10 +54,14 @@ func check_buying(ID_evolve):
 
 
 
-func _on_wall_bounce():
-	add_points(EvolveManager.points_from_bounce())
 
 
 func _on_ui_buy_button_pressed(ID_evolve):
 	check_buying(ID_evolve)
 
+func _on_ball_game_wall_bounce():
+	add_points(EvolveManager.points_from_bounce())
+
+func _on_ball_game_bonk():
+	add_points(EvolveManager.points_from_bonk())
+	BonkSound.play()

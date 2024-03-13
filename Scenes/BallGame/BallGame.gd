@@ -4,9 +4,11 @@ extends Node2D
 
 
 signal wall_bounce()
+signal bonk()
 
 func _ready():
 	EVENTS.ball_wall_bounce.connect(_on_ball_wall_bounce)
+	EVENTS.ball_bonk.connect(_on_ball_bonk)
 	add_ball()
 
 
@@ -14,6 +16,8 @@ func _ready():
 func _on_ball_wall_bounce():
 	wall_bounce.emit()
 
+func _on_ball_bonk():
+	bonk.emit()
 
 func add_ball():
 	var new_ball = ball_scene.instantiate()
