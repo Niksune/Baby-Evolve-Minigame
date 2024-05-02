@@ -13,3 +13,5 @@ var evolve_map = {
 }
 
 var game_mode = false
+
+var bonk_counted_board: Dictionary
