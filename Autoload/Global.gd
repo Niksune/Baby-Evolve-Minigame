@@ -14,4 +14,9 @@ var evolve_map = {
 
 var game_mode = false
 
+"""
 var bonk_counted_board: Dictionary
+var bonk_direction_board: Dictionary
+var flag_direction_bonk: bool = false
+
+"""

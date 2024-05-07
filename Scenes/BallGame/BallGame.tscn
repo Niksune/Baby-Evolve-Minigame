@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtn8sjtbclgi2"]
+[gd_scene load_steps=4 format=3 uid="uid://dtn8sjtbclgi2"]
 
 [ext_resource type="Script" path="res://Scenes/BallGame/BallGame.gd" id="1_b0wxk"]
 [ext_resource type="Texture2D" uid="uid://d41ro0m2gg8q" path="res://Assets/Fonds/espace.jpg" id="3_364w6"]
+[ext_resource type="Script" path="res://Scenes/BallGame/BonkManager.gd" id="3_uiogn"]
 
 [node name="BallGame" type="Node2D"]
 script = ExtResource("1_b0wxk")
@@ -11,3 +12,9 @@ z_index = -10
 offset_right = 852.0
 offset_bottom = 648.0
 texture = ExtResource("3_364w6")
+
+[node name="BonkManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_uiogn")
+
+[connection signal="bonk_points" from="BonkManager" to="." method="_on_bonk_manager_bonk_points"]
