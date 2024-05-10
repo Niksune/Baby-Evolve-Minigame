@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Ball
 
 var speed = 300.0
 var direction := Vector2(1.0,1.0)
@@ -9,6 +9,11 @@ var direction := Vector2(1.0,1.0)
 var rotation_speed = 2.0
 var collision_board: Dictionary
 
+func get_direction_x():
+	return direction.x
+
+func get_direction_y():
+	return direction.y
 
 func _init():
 	position.x = randi()%852
@@ -40,29 +45,40 @@ func manage_wall_bounce():
 func manage_collision():
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
-		bonk(collision)
+		bonk(collision.get_collider())
 
-func bonk(collision : KinematicCollision2D):
-	var name_str = self.get_instance_id()
-	var other_name_str = collision.get_collider().get_instance_id()
-	
-	if(!collision_board.has(name_str)):
-		collision_board[name_str] = {}
+func bonk(collider : Ball):
+	var collider_name = collider.get_instance_id()
 		
-	if(!collision_board[name_str].has(other_name_str)):
-		collision_board[name_str][other_name_str] = Time.get_unix_time_from_system()
-		change_direction(collision)
-		count_bonk(name_str, other_name_str)
-	elif(collision_board[name_str][other_name_str]+0.2 < Time.get_unix_time_from_system()):
-		collision_board[name_str][other_name_str] = Time.get_unix_time_from_system()
-		change_direction(collision)
-		count_bonk(name_str, other_name_str)
+	if(!collision_board.has(collider_name) || collision_board[collider_name] + 0.1 < Time.get_unix_time_from_system()):
+	#if(!collision_board.has(collider_name)):
+		#change_direction(collider)
+		count_bonk(self.get_instance_id(), collider_name)
+		collision_board[collider_name] = Time.get_unix_time_from_system()
+		# And we call the collider to be sure the collision is managed by the two balls
+		collider.bonk_by_colleague(self,self.get_direction_x(),self.get_direction_y())
+		
+		
+func bonk_by_colleague(collider : Ball, collider_direction_x, collider_direction_y):
+	if collider.direction.x != collider_direction_x:
+		print("DIFF")
+	
+	bonk(collider)
+	
 
-func change_direction(collision : KinematicCollision2D):
-	if direction.x <= collision.get_collider().direction.x:
+	
+	if direction.x <= collider_direction_x:
 		direction = Vector2(-direction.x, direction.y)
 		
-	if direction.y <= collision.get_collider().direction.y:
+	if direction.y <= collider_direction_y:
+		direction = Vector2(direction.x, -direction.y)
+		
+
+func change_direction(collider : Ball):
+	if direction.x <= collider.direction.x:
+		direction = Vector2(-direction.x, direction.y)
+		
+	if direction.y <= collider.direction.y:
 		direction = Vector2(direction.x, -direction.y)
 
 
