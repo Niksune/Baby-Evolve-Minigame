@@ -9,11 +9,6 @@ var direction := Vector2(1.0,1.0)
 var rotation_speed = 2.0
 var collision_board: Dictionary
 
-func get_direction_x():
-	return direction.x
-
-func get_direction_y():
-	return direction.y
 
 func _init():
 	position.x = randi()%852
@@ -56,21 +51,16 @@ func bonk(collider : Ball):
 		count_bonk(self.get_instance_id(), collider_name)
 		collision_board[collider_name] = Time.get_unix_time_from_system()
 		# And we call the collider to be sure the collision is managed by the two balls
-		collider.bonk_by_colleague(self,self.get_direction_x(),self.get_direction_y())
+		collider.bonk_by_colleague(self,self.duplicate())
 		
 		
-func bonk_by_colleague(collider : Ball, collider_direction_x, collider_direction_y):
-	if collider.direction.x != collider_direction_x:
-		print("DIFF")
-	
+func bonk_by_colleague(collider : Ball, duplicated_colleague):
 	bonk(collider)
 	
-
-	
-	if direction.x <= collider_direction_x:
+	if direction.x <= duplicated_colleague.direction.x:
 		direction = Vector2(-direction.x, direction.y)
 		
-	if direction.y <= collider_direction_y:
+	if direction.y <= duplicated_colleague.direction.y:
 		direction = Vector2(direction.x, -direction.y)
 		
 
