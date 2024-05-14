@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Ball
 
+@export var ball_scene = preload("res://Scenes/Ball/Ball.tscn")
+
 var speed = 300.0
 var direction := Vector2(1.0,1.0)
 
@@ -23,7 +25,7 @@ func _physics_process(_delta):
 	velocity = direction * speed
 	move_and_slide()
 	
-	
+
 func manage_wall_bounce():
 	if(position.x < 0 and direction.x < 0):
 		direction = Vector2(-direction.x, direction.y)
@@ -50,42 +52,24 @@ func bonk(collider : Ball):
 	var collider_name = collider.get_instance_id()
 		
 	if(!collision_board.has(collider_name) || collision_board[collider_name] + 0.1 < Time.get_unix_time_from_system()):
-	#if(!collision_board.has(collider_name)):
-		#change_direction(collider)
 		count_bonk(self.get_instance_id(), collider_name)
 		collision_board[collider_name] = Time.get_unix_time_from_system()
 		# And we call the collider to be sure the collision is managed by the two balls
-		print(direction.x," ",direction.y)
-		var dup = self.duplicate(true)
-		print(self)
-		print(dup)
-		#print("dup:",dup.direction.x," ",dup.direction.y)
-		
-		collider.bonk_by_colleague(self,self.duplicate())
+		# We have to make this ugly copy (not total, only direction) to give the parameter by value...
+		var copy_ball = ball_scene.instantiate()
+		copy_ball.direction = direction
+		collider.bonk_by_colleague(self,copy_ball)
 		
 	mut.unlock()
-		
-		
+
 func bonk_by_colleague(collider : Ball, duplicated_colleague):
 	bonk(collider)
 	
-	#print(direction.x," ",direction.y)
-	#print("col: ",duplicated_colleague.direction.x," ",duplicated_colleague.direction.y)
-	
-	if direction.x <= duplicated_colleague.direction.x:
+	if direction.x != duplicated_colleague.direction.x:
 		direction = Vector2(-direction.x, direction.y)
 		
-	if direction.y <= duplicated_colleague.direction.y:
+	if direction.y != duplicated_colleague.direction.y:
 		direction = Vector2(direction.x, -direction.y)
-		
-
-func change_direction(collider : Ball):
-	if direction.x <= collider.direction.x:
-		direction = Vector2(-direction.x, direction.y)
-		
-	if direction.y <= collider.direction.y:
-		direction = Vector2(direction.x, -direction.y)
-
 
 func count_bonk(name, other_name):
 	var tmp
