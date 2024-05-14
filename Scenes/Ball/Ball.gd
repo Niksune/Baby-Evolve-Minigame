@@ -8,6 +8,7 @@ var direction := Vector2(1.0,1.0)
 @export var max_y = 648
 var rotation_speed = 2.0
 var collision_board: Dictionary
+var mut: Mutex = Mutex.new()
 
 
 func _init():
@@ -43,6 +44,9 @@ func manage_collision():
 		bonk(collision.get_collider())
 
 func bonk(collider : Ball):
+	
+	mut.lock()
+	
 	var collider_name = collider.get_instance_id()
 		
 	if(!collision_board.has(collider_name) || collision_board[collider_name] + 0.1 < Time.get_unix_time_from_system()):
@@ -51,11 +55,22 @@ func bonk(collider : Ball):
 		count_bonk(self.get_instance_id(), collider_name)
 		collision_board[collider_name] = Time.get_unix_time_from_system()
 		# And we call the collider to be sure the collision is managed by the two balls
+		print(direction.x," ",direction.y)
+		var dup = self.duplicate(true)
+		print(self)
+		print(dup)
+		#print("dup:",dup.direction.x," ",dup.direction.y)
+		
 		collider.bonk_by_colleague(self,self.duplicate())
+		
+	mut.unlock()
 		
 		
 func bonk_by_colleague(collider : Ball, duplicated_colleague):
 	bonk(collider)
+	
+	#print(direction.x," ",direction.y)
+	#print("col: ",duplicated_colleague.direction.x," ",duplicated_colleague.direction.y)
 	
 	if direction.x <= duplicated_colleague.direction.x:
 		direction = Vector2(-direction.x, direction.y)
