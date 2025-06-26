@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfeuyihwq6loe"]
 
-[ext_resource type="Script" path="res://Scenes/UI/UI.gd" id="1_gf8fs"]
+[ext_resource type="Script" uid="uid://dxw6xxso6fdwk" path="res://Scenes/UI/UI.gd" id="1_gf8fs"]
 [ext_resource type="PackedScene" uid="uid://dll7tgwvm8fd1" path="res://Scenes/Dialogs/DialogBox.tscn" id="2_wtviy"]
 
 [node name="UI" type="Node2D"]

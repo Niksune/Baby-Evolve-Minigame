@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://bae4h0r30ijdr"]
 
 [ext_resource type="PackedScene" uid="uid://dfeuyihwq6loe" path="res://Scenes/UI/UI.tscn" id="1_fpevc"]
-[ext_resource type="Script" path="res://Scenes/Game/Game.gd" id="1_js6wb"]
-[ext_resource type="Script" path="res://Scenes/Game/DialogManager.gd" id="1_kxsmm"]
+[ext_resource type="Script" uid="uid://b6wmgt5ns1825" path="res://Scenes/Game/Game.gd" id="1_js6wb"]
+[ext_resource type="Script" uid="uid://bbag47l8jhijl" path="res://Scenes/Game/DialogManager.gd" id="1_kxsmm"]
 [ext_resource type="PackedScene" uid="uid://dtn8sjtbclgi2" path="res://Scenes/BallGame/BallGame.tscn" id="3_ixc25"]
-[ext_resource type="Script" path="res://Scenes/Game/EvolveManager.gd" id="5_mtkla"]
+[ext_resource type="Script" uid="uid://bw4kib2f1em1b" path="res://Scenes/Game/EvolveManager.gd" id="5_mtkla"]
 [ext_resource type="AudioStream" uid="uid://b6mm7jriyewg0" path="res://Assets/Sounds/bonk.mp3" id="6_26nr8"]
 
 [node name="Game" type="Node2D"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://chiax3bp2fqbj"]
 
-[ext_resource type="Script" path="res://Scenes/Ball/Ball.gd" id="1_yog06"]
+[ext_resource type="Script" uid="uid://5jlltm7p224j" path="res://Scenes/Ball/Ball.gd" id="1_yog06"]
 [ext_resource type="Texture2D" uid="uid://dg8x3l0cefcqk" path="res://Assets/Pictures/meteore_50.png" id="2_nk4ux"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f3c03"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dll7tgwvm8fd1"]
 
-[ext_resource type="Script" path="res://Scenes/Dialogs/DialogBox.gd" id="1_c2t88"]
+[ext_resource type="Script" uid="uid://ccxwvedmxnd20" path="res://Scenes/Dialogs/DialogBox.gd" id="1_c2t88"]
 [ext_resource type="Texture2D" uid="uid://6dauvurgpcyr" path="res://Assets/Fonds/fond_marron.png" id="2_kdnt3"]
 
 [node name="DialogBox" type="Node2D"]

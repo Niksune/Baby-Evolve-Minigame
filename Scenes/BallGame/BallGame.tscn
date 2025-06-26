@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtn8sjtbclgi2"]
 
-[ext_resource type="Script" path="res://Scenes/BallGame/BallGame.gd" id="1_b0wxk"]
+[ext_resource type="Script" uid="uid://clksax5neq2q0" path="res://Scenes/BallGame/BallGame.gd" id="1_b0wxk"]
 [ext_resource type="Texture2D" uid="uid://d41ro0m2gg8q" path="res://Assets/Fonds/espace.jpg" id="3_364w6"]
 
 [node name="BallGame" type="Node2D"]
