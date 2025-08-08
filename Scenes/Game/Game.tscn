@@ -33,9 +33,11 @@ unique_name_in_owner = true
 [node name="BallGame" parent="." instance=ExtResource("3_ixc25")]
 position = Vector2(300, 100)
 
+[connection signal="discharge" from="TopBumper" to="." method="_on_top_bumper_discharge"]
 [connection signal="add_ball" from="EvolveManager" to="BallGame" method="_on_evolve_manager_add_ball"]
 [connection signal="add_new_evolve" from="EvolveManager" to="UI" method="_on_evolve_manager_add_new_evolve"]
 [connection signal="launch_dialog" from="DialogManager" to="UI" method="_on_dialog_manager_launch_dialog"]
 [connection signal="buy_button_pressed" from="UI" to="." method="_on_ui_buy_button_pressed"]
 [connection signal="bonk" from="BallGame" to="." method="_on_ball_game_bonk"]
 [connection signal="wall_bounce" from="BallGame" to="." method="_on_ball_game_wall_bounce"]
+[connection signal="wall_bounce" from="BallGame" to="TopBumper" method="_on_ball_game_wall_bounce"]

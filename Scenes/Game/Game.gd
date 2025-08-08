@@ -65,3 +65,6 @@ func _on_ball_game_wall_bounce():
 func _on_ball_game_bonk():
 	add_points(EvolveManager.points_from_bonk())
 	BonkSound.play()
+
+func _on_top_bumper_discharge() -> void:
+	print("DISCARGE")
