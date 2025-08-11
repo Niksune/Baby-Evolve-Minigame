@@ -12,3 +12,5 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 offset_right = 8.0
 offset_bottom = 8.0
+
+[connection signal="pressed" from="BumperTextureButton" to="." method="_on_bumper_texture_button_pressed"]

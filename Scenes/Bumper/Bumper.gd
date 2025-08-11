@@ -6,8 +6,9 @@ extends Node2D
 @export var ID: String
 var orientation: String
 var charged: bool = false
+var level: int = 1
 
-signal discharge()
+signal discharge(level: int)
 
 var textures := {
 	"vertical_rouge": preload("res://Assets/Bumpers/fond_rouge_vertical.png"),
@@ -23,7 +24,6 @@ func set_bumper_texture(couleur: String) -> void:
 	
 func _ready():
 	EVENTS.ball_wall_bounce.connect(_on_ball_wall_bounce)
-	BumperTextureButton.pressed.connect(_on_texture_button_pressed)
 	if "top" in ID or "bottom" in ID:
 		orientation = "horizontal"
 	else:
@@ -31,14 +31,11 @@ func _ready():
 	set_bumper_texture(orientation+"_rouge")
 
 
-func _on_texture_button_pressed():
-	print("zone cliquée :"+ID)
+func _on_bumper_texture_button_pressed() -> void:
 	if charged:
 		charged = false
 		set_bumper_texture(orientation+"_rouge")
-		discharge.emit()
-		
-
+		EVENTS.bumper_discarge.emit(level)
 
 func _on_ball_wall_bounce(ID_bumper: String) -> void:
 	if ID == ID_bumper:

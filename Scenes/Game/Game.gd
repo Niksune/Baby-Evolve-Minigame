@@ -14,6 +14,7 @@ var total_points : int = 0
 func _ready():
 	if GLOBAL.game_mode:
 		DialogManager.execute_dialog(1)
+	EVENTS.bumper_discarge.connect(_on_bumper_discharge)
 
 
 
@@ -66,5 +67,5 @@ func _on_ball_game_bonk():
 	add_points(EvolveManager.points_from_bonk())
 	BonkSound.play()
 
-func _on_top_bumper_discharge() -> void:
-	print("DISCARGE")
+func _on_bumper_discharge(bumper_level: int) -> void:
+	add_points(EvolveManager.points_from_discharge(bumper_level))

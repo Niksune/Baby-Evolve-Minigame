@@ -7,6 +7,7 @@ var Evolve = load("res://Scenes/Game/Evolve.gd")
 
 var bounce_wall_multiplicator = 1
 var bonk_multiplicator = 1
+var discharge_multiplicator = 1
 
 var multi_bounce_counter = 1
 var add_ball_counter = 1
@@ -24,6 +25,9 @@ func points_from_bounce():
 
 func points_from_bonk():
 	return 10000 * bonk_multiplicator
+	
+func points_from_discharge(bumper_level: int):
+	return 10 * discharge_multiplicator * bumper_level
 
 func points_change(current_points, total_points):
 	if current_points >= GLOBAL.evolve_map["multi_bounce_1"].cost && !GLOBAL.evolve_map["multi_bounce_1"].buyable : 
@@ -95,4 +99,3 @@ func process_infinite_evolves(ID_evolve):
 			add_ball_counter += 1
 			if add_ball_counter >= 3:
 				GLOBAL.evolve_map["add_ball_"+str(add_ball_counter)] = Evolve.new("add_ball", add_ball_counter, pow(10, add_ball_counter-1), false)
-
