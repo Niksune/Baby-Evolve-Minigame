@@ -11,10 +11,6 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_js6wb")
 
-[node name="TopBumper" parent="." instance=ExtResource("2_1q8bt")]
-position = Vector2(300, 0)
-zone_id = "top_left"
-
 [node name="EvolveManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("5_mtkla")
@@ -31,13 +27,41 @@ stream = ExtResource("6_26nr8")
 unique_name_in_owner = true
 
 [node name="BallGame" parent="." instance=ExtResource("3_ixc25")]
-position = Vector2(300, 100)
+position = Vector2(400, 100)
 
-[connection signal="discharge" from="TopBumper" to="." method="_on_top_bumper_discharge"]
+[node name="LeftBumper" parent="." instance=ExtResource("2_1q8bt")]
+position = Vector2(300, 100)
+ID = "left"
+
+[node name="TopLeftBumper" parent="." instance=ExtResource("2_1q8bt")]
+position = Vector2(400, 0)
+ID = "top_left"
+
+[node name="TopRightBumper" parent="." instance=ExtResource("2_1q8bt")]
+position = Vector2(850, 0)
+ID = "top_right"
+
+[node name="RightBumper" parent="." instance=ExtResource("2_1q8bt")]
+position = Vector2(1300, 100)
+ID = "right"
+
+[node name="BottomLeftBumper" parent="." instance=ExtResource("2_1q8bt")]
+position = Vector2(400, 700)
+ID = "bottom_left"
+
+[node name="BottomRightBumper" parent="." instance=ExtResource("2_1q8bt")]
+position = Vector2(850, 700)
+ID = "bottom_right"
+
 [connection signal="add_ball" from="EvolveManager" to="BallGame" method="_on_evolve_manager_add_ball"]
 [connection signal="add_new_evolve" from="EvolveManager" to="UI" method="_on_evolve_manager_add_new_evolve"]
 [connection signal="launch_dialog" from="DialogManager" to="UI" method="_on_dialog_manager_launch_dialog"]
 [connection signal="buy_button_pressed" from="UI" to="." method="_on_ui_buy_button_pressed"]
 [connection signal="bonk" from="BallGame" to="." method="_on_ball_game_bonk"]
 [connection signal="wall_bounce" from="BallGame" to="." method="_on_ball_game_wall_bounce"]
-[connection signal="wall_bounce" from="BallGame" to="TopBumper" method="_on_ball_game_wall_bounce"]
+[connection signal="discharge" from="LeftBumper" to="." method="_on_top_bumper_discharge"]
+[connection signal="discharge" from="TopLeftBumper" to="." method="_on_top_bumper_discharge"]
+[connection signal="discharge" from="TopRightBumper" to="." method="_on_top_bumper_discharge"]
+[connection signal="discharge" from="RightBumper" to="." method="_on_top_bumper_discharge"]
+[connection signal="discharge" from="BottomLeftBumper" to="." method="_on_top_bumper_discharge"]
+[connection signal="discharge" from="BottomRightBumper" to="." method="_on_top_bumper_discharge"]

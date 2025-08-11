@@ -13,7 +13,7 @@ func _ready():
 
 
 
-func _on_ball_wall_bounce():
+func _on_ball_wall_bounce(ID_bumper: String):
 	wall_bounce.emit()
 
 func _on_ball_bonk():

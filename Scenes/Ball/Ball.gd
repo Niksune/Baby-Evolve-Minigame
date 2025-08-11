@@ -6,16 +6,16 @@ class_name Ball
 var speed = 300.0
 var direction := Vector2(1.0,1.0)
 
-@export var max_x = 852
-@export var max_y = 648
+@export var max_x = 900
+@export var max_y = 600
 var rotation_speed = 2.0
 var collision_board: Dictionary
 var mut: Mutex = Mutex.new()
 
 
 func _init():
-	position.x = randi()%852
-	position.y = randi()%648
+	position.x = randi()%max_x
+	position.y = randi()%max_y
 
 func _physics_process(_delta):
 	manage_wall_bounce()
@@ -29,16 +29,22 @@ func _physics_process(_delta):
 func manage_wall_bounce():
 	if(position.x < 0 and direction.x < 0):
 		direction = Vector2(-direction.x, direction.y)
-		EVENTS.ball_wall_bounce.emit()
+		EVENTS.ball_wall_bounce.emit("left")
 	if(position.y < 0 and direction.y < 0):
 		direction = Vector2(direction.x, -direction.y)
-		EVENTS.ball_wall_bounce.emit()
+		if position.x < max_x/2:
+			EVENTS.ball_wall_bounce.emit("top_left")
+		else:
+			EVENTS.ball_wall_bounce.emit("top_right")
 	if(position.x >= max_x and direction.x > 0):
 		direction = Vector2(-direction.x, direction.y)
-		EVENTS.ball_wall_bounce.emit()
+		EVENTS.ball_wall_bounce.emit("right")
 	if(position.y >= max_y and direction.y > 0):
 		direction = Vector2(direction.x, -direction.y)
-		EVENTS.ball_wall_bounce.emit()
+		if position.x < max_x/2:
+			EVENTS.ball_wall_bounce.emit("bottom_left")
+		else:
+			EVENTS.ball_wall_bounce.emit("bottom_right")
 
 func manage_collision():
 	for i in get_slide_collision_count():

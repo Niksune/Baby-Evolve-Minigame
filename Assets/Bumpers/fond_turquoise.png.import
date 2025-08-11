@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b38ya2ordoprq"
-path="res://.godot/imported/fond_rouge.png-7fa728c453913b12920942dc48674558.ctex"
+uid="uid://wbeffaoxft8w"
+path="res://.godot/imported/fond_turquoise.png-1b835a62e068f0ae29028cff453301b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Fonds/fond_rouge.png"
-dest_files=["res://.godot/imported/fond_rouge.png-7fa728c453913b12920942dc48674558.ctex"]
+source_file="res://Assets/Bumpers/fond_turquoise.png"
+dest_files=["res://.godot/imported/fond_turquoise.png-1b835a62e068f0ae29028cff453301b1.ctex"]
 
 [params]
 
