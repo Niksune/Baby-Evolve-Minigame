@@ -1,3 +1,12 @@
-[gd_scene format=3 uid="uid://b6smlnwx616uh"]
+[gd_scene load_steps=3 format=3 uid="uid://b6smlnwx616uh"]
+
+[ext_resource type="PackedScene" uid="uid://bps2wyohp02fs" path="res://Scenes/Ship/Ship.tscn" id="1_c0mih"]
+[ext_resource type="Script" uid="uid://djxyc8ofcukcj" path="res://Scenes/ShootGame/projectile_manager.gd" id="2_gjqih"]
 
 [node name="ShootGame" type="Node2D"]
+
+[node name="Ship" parent="." instance=ExtResource("1_c0mih")]
+unique_name_in_owner = true
+
+[node name="ProjectileManager" type="Node2D" parent="."]
+script = ExtResource("2_gjqih")

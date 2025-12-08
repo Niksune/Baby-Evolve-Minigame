@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bae4h0r30ijdr"]
+[gd_scene load_steps=9 format=3 uid="uid://bae4h0r30ijdr"]
 
 [ext_resource type="PackedScene" uid="uid://dfeuyihwq6loe" path="res://Scenes/UI/UI.tscn" id="1_fpevc"]
 [ext_resource type="Script" uid="uid://b6wmgt5ns1825" path="res://Scenes/Game/Game.gd" id="1_js6wb"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dtn8sjtbclgi2" path="res://Scenes/BallGame/BallGame.tscn" id="3_ixc25"]
 [ext_resource type="Script" uid="uid://bw4kib2f1em1b" path="res://Scenes/Game/EvolveManager.gd" id="5_mtkla"]
 [ext_resource type="AudioStream" uid="uid://b6mm7jriyewg0" path="res://Assets/Sounds/bonk.mp3" id="6_26nr8"]
+[ext_resource type="PackedScene" uid="uid://b6smlnwx616uh" path="res://Scenes/ShootGame/ShootGame.tscn" id="8_gvja8"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_js6wb")
@@ -52,6 +53,9 @@ ID = "bottom_left"
 [node name="BottomRightBumper" parent="." instance=ExtResource("2_1q8bt")]
 position = Vector2(850, 700)
 ID = "bottom_right"
+
+[node name="ShootGame" parent="." instance=ExtResource("8_gvja8")]
+position = Vector2(400, 800)
 
 [connection signal="add_ball" from="EvolveManager" to="BallGame" method="_on_evolve_manager_add_ball"]
 [connection signal="add_new_evolve" from="EvolveManager" to="UI" method="_on_evolve_manager_add_new_evolve"]
