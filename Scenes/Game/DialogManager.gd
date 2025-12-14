@@ -1,7 +1,5 @@
 extends Node
 
-@onready var TextsNode = %TextsNode
-
 signal launch_dialog(main_text, button_text)
 
 var dialog_list_fr = [
